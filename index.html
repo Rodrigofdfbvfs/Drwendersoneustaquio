@@ -1,0 +1,1350 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Wenderson — Medicina Nutricional Personalizada</title>
+  <meta name="description" content="Protocolo nutricional individualizado baseado nos seus exames. Descubra o que está bloqueando o seu metabolismo e recupere saúde, energia e composição corporal de verdade.">
+  <meta name="theme-color" content="#0C0C0C">
+
+  <!-- Preload imagens críticas (LCP) -->
+  <link rel="preload" as="image" href="assets/img/capadesktop.jpg" media="(min-width: 768px)">
+  <link rel="preload" as="image" href="assets/img/CAPA CELULAR.png" media="(max-width: 767px)">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Kit CSS -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/typography.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/effects.css">
+
+  <!-- Page-specific styles -->
+  <style>
+    /* ── Page overrides ── */
+    html { scroll-behavior: smooth; }
+
+    /* About photo — sem flip */
+    .about-photo-wrap {
+      flex-shrink: 0;
+      width: clamp(200px, 28vw, 300px);
+      border-radius: var(--kit-radius-lg);
+      overflow: hidden;
+      border: 2px solid var(--kit-primary);
+    }
+    .about-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--kit-primary-subtle);
+      border: 1px solid var(--kit-primary);
+      border-radius: var(--kit-radius-pill);
+      padding: 6px 20px;
+      font-size: var(--kit-fs-caption);
+      font-family: var(--kit-font-body);
+      color: var(--kit-primary-light);
+      letter-spacing: var(--kit-ls-label);
+      text-transform: uppercase;
+      font-weight: var(--kit-fw-semibold);
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--kit-primary);
+      animation: kit-brilho-sutil 2s ease-in-out infinite;
+    }
+
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: left;
+      max-width: min(680px, 56vw);
+      margin-left: clamp(8px, 2vw, 24px);
+      margin-right: auto;
+    }
+
+    /* Módulo cards */
+    .modulo-card {
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+      border-radius: 12px;
+      padding: 32px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .modulo-card:hover {
+      border-color: #22C55E;
+      transform: translateY(-4px);
+    }
+
+    .modulo-number {
+      width: 48px;
+      height: 48px;
+      background: #16A34A;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--kit-font-heading);
+      font-size: 20px;
+      font-weight: var(--kit-fw-extrabold);
+      color: #ffffff;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+
+    .modulo-title {
+      font-family: var(--kit-font-heading);
+      font-size: 20px;
+      font-weight: var(--kit-fw-bold);
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .modulo-desc {
+      font-size: 15px;
+      color: #a0a0a0;
+      line-height: var(--kit-lh-body);
+      margin-top: 0;
+    }
+
+    /* Bonus cards */
+    .bonus-card {
+      background: linear-gradient(135deg, var(--kit-bg-card) 0%, rgba(22,163,74,0.06) 100%);
+      border: 1px solid rgba(22,163,74,0.2);
+      border-radius: var(--kit-radius-lg);
+      padding: clamp(20px, 3vw, 32px);
+      transition: all 0.3s ease;
+    }
+    .bonus-card:hover {
+      border-color: var(--kit-primary);
+      transform: scale(1.02);
+    }
+    .bonus-label {
+      font-size: var(--kit-fs-caption);
+      font-weight: var(--kit-fw-bold);
+      color: var(--kit-primary-light);
+      letter-spacing: var(--kit-ls-label);
+      text-transform: uppercase;
+    }
+
+    /* Pain list */
+    .pain-list, .gain-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pain-list li, .gain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: var(--kit-fs-body);
+      color: var(--kit-text-muted);
+      line-height: var(--kit-lh-body);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 14px 18px;
+      transition: all 0.3s ease;
+    }
+    .gain-list li {
+      border-left: 3px solid var(--kit-primary);
+    }
+    .gain-list li:hover {
+      background: rgba(22,163,74,0.07);
+      border-color: var(--kit-primary);
+      transform: translateX(4px);
+    }
+    .pain-list li:hover {
+      background: rgba(255,60,60,0.05);
+    }
+    .pain-list li::before {
+      content: '✕';
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 60, 60, 0.15);
+      color: #FF4D4D;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .gain-list li::before {
+      content: '✓';
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--kit-primary-subtle);
+      color: var(--kit-primary-light);
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--kit-border-subtle);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--kit-text-primary);
+      font-family: var(--kit-font-heading);
+      font-size: var(--kit-fs-body-lg);
+      font-weight: var(--kit-fw-semibold);
+      padding: 20px 0;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: var(--kit-primary-light); }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--kit-primary);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .faq-item.active .faq-question::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 0;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 0 20px 0;
+    }
+    .faq-answer p {
+      color: var(--kit-text-muted);
+      font-size: var(--kit-fs-body);
+      line-height: var(--kit-lh-body);
+    }
+
+    /* Pricing */
+    .pricing-box {
+      background: linear-gradient(160deg, var(--kit-bg-card) 0%, rgba(22,163,74,0.08) 100%);
+      border: 2px solid var(--kit-primary);
+      border-radius: var(--kit-radius-xl);
+      padding: clamp(32px, 5vw, 56px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 50% 0%, rgba(22,163,74,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .price-old {
+      font-size: var(--kit-fs-h3);
+      color: var(--kit-text-secondary);
+      text-decoration: line-through;
+      font-weight: var(--kit-fw-light);
+    }
+    .price-current {
+      font-family: var(--kit-font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: var(--kit-fw-extrabold);
+      color: var(--kit-text-primary);
+      line-height: 1.1;
+    }
+    .price-current span {
+      color: var(--kit-primary-light);
+    }
+
+    /* Guarantee */
+    .guarantee-box {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 32px);
+      background: var(--kit-bg-card);
+      border: 1px solid var(--kit-border-subtle);
+      border-radius: var(--kit-radius-lg);
+      padding: clamp(20px, 3vw, 32px);
+    }
+    .guarantee-icon {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--kit-primary-subtle);
+      font-size: 2.5rem;
+    }
+
+    /* Depoimento card dark */
+    .depo-card {
+      background: var(--kit-bg-card);
+      border: 1px solid var(--kit-border-subtle);
+      border-radius: var(--kit-radius-lg);
+      padding: clamp(20px, 3vw, 28px);
+      transition: all 0.3s ease;
+    }
+    .depo-card:hover {
+      border-color: var(--kit-primary);
+      transform: translateY(-2px);
+    }
+    .depo-card__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .depo-card__avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--kit-gradient-btn);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--kit-fw-bold);
+      font-size: 1.1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .depo-card__name {
+      font-weight: var(--kit-fw-semibold);
+      font-size: var(--kit-fs-body);
+      color: var(--kit-text-primary);
+    }
+    .depo-card__role {
+      font-size: var(--kit-fs-caption);
+      color: var(--kit-text-secondary);
+    }
+    .depo-card__text {
+      font-size: var(--kit-fs-body);
+      color: var(--kit-text-muted);
+      line-height: var(--kit-lh-body);
+      font-style: italic;
+    }
+    .depo-card__result {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--kit-border-subtle);
+      font-size: var(--kit-fs-caption);
+      font-weight: var(--kit-fw-semibold);
+      color: var(--kit-primary-light);
+    }
+
+    /* Carrossel de depoimentos (loop contínuo) */
+    .depo-carousel-outer {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 6px 0;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+    .depo-carousel-track {
+      --depo-gap: 16px;
+      display: flex;
+      align-items: stretch;
+      gap: var(--depo-gap);
+      width: max-content;
+      will-change: transform;
+      animation: depo-marquee 55s linear infinite;
+    }
+    .depo-carousel-outer:hover .depo-carousel-track {
+      animation-play-state: paused;
+    }
+    .depo-carousel-item {
+      flex: 0 0 clamp(240px, 28vw, 340px);
+      border-radius: 0;
+      overflow: hidden;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+    .depo-carousel-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: unset;
+      object-fit: unset;
+    }
+    .depo-carousel-outer::before,
+    .depo-carousel-outer::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .depo-carousel-outer::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(12,12,12,0.95), rgba(12,12,12,0));
+    }
+    .depo-carousel-outer::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(12,12,12,0.95), rgba(12,12,12,0));
+    }
+
+    @keyframes depo-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - (var(--depo-gap) / 2))); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .depo-carousel-track {
+        animation: none;
+      }
+    }
+
+    /* Comparison table */
+    .compare-table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 120px 120px;
+      gap: 0;
+      border-bottom: 1px solid var(--kit-border-subtle);
+      padding: 14px 0;
+      align-items: center;
+    }
+    .compare-row--header {
+      border-bottom: 2px solid var(--kit-primary);
+      padding-bottom: 16px;
+      margin-bottom: 4px;
+    }
+    .compare-row--header span {
+      font-weight: var(--kit-fw-bold);
+      font-size: var(--kit-fs-caption);
+      text-transform: uppercase;
+      letter-spacing: var(--kit-ls-label);
+      text-align: center;
+    }
+    .compare-feature {
+      font-size: var(--kit-fs-body);
+      color: var(--kit-text-muted);
+    }
+    .compare-check, .compare-cross {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .compare-check { color: var(--kit-primary-light); }
+    .compare-cross { color: var(--kit-text-secondary); }
+
+    /* ── Compare Table Enhancement ── */
+    .compare-table {
+      background: linear-gradient(135deg, var(--kit-bg-card) 0%, rgba(22,163,74,0.05) 100%);
+      border: 1px solid var(--kit-border-subtle);
+      border-radius: var(--kit-radius-xl);
+      padding: clamp(16px, 3vw, 32px);
+      box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+    }
+    .compare-row {
+      transition: all 0.3s ease;
+      padding: 16px 16px;
+      border-radius: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .compare-row:not(.compare-row--header):hover {
+      background: rgba(22,163,74,0.08);
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-color: transparent;
+    }
+    .compare-row--header {
+      border-bottom: 2px solid var(--kit-primary) !important;
+    }
+
+    /* ══════════════════════════════════════════
+       MOBILE RESPONSIVE
+       ══════════════════════════════════════════ */
+    @media (max-width: 767px) {
+      /* Compare table mobile */
+      .compare-row { grid-template-columns: 1fr 60px 60px; }
+      .compare-row--header span { font-size: 0.6rem; letter-spacing: 0; }
+
+      /* Centralizar conteudo da hero no mobile */
+      .hero-content {
+        max-width: 100%;
+        margin-left: 0;
+        text-align: center;
+      }
+      .hero-content .hero-badge { margin: 0 auto; }
+      .hero-content .kit-h1,
+      .hero-content .kit-body-lg { text-align: center; max-width: 100%; }
+      .hero-content [data-anim] { text-align: center; }
+
+      /* Hero section mobile sem imagem */
+      .hero-section {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding-top: clamp(80px, 12vw, 120px) !important;
+        padding-bottom: clamp(40px, 8vw, 80px) !important;
+      }
+
+      /* Conteudo da hero mobile */
+      .hero-content {
+        position: relative !important;
+        z-index: 2 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 12px !important;
+      }
+
+      /* Responsividade geral */
+      .depo-carousel-outer::before,
+      .depo-carousel-outer::after { width: 60px; }
+      .depo-carousel-track { --depo-gap: 10px; }
+      .depo-carousel-item { flex-basis: clamp(150px, 45vw, 200px); }
+      .about-section-inner { flex-direction: column !important; align-items: center !important; }
+      .about-photo-wrap { width: 100% !important; max-width: 240px !important; margin: 0 auto !important; }
+      .urgency-grid { grid-template-columns: 1fr !important; }
+      .kit-btn-primary {
+        font-size: 0.8rem !important;
+        padding: 14px 20px !important;
+        white-space: normal !important;
+        text-align: center;
+      }
+    }
+
+    /* Desktop: respiro no topo da hero */
+    @media (min-width: 768px) {
+      .hero-section {
+        padding-top: clamp(110px, 10vw, 170px) !important;
+      }
+    }
+
+    /* Desktop: hero mais equilibrada e headline com menos quebra */
+    @media (min-width: 1024px) {
+      .hero-section {
+        padding-top: clamp(120px, 10vw, 180px) !important;
+        padding-bottom: clamp(84px, 7vw, 120px) !important;
+      }
+      .hero-content {
+        max-width: min(820px, 62vw);
+        margin-left: clamp(60px, 8vw, 130px);
+      }
+      .hero-section h1.kit-h1 {
+        max-width: min(820px, 62vw) !important;
+        font-size: clamp(1.9rem, 3.2vw, 3rem) !important;
+        line-height: 1.08;
+        text-wrap: balance;
+      }
+      .hero-section .kit-body-lg {
+        max-width: min(680px, 50vw) !important;
+        font-size: clamp(0.95rem, 1.3vw, 1.1rem) !important;
+      }
+      .voce-nao-falhou-h2 {
+        font-size: clamp(2.2rem, 4.5vw, 3.8rem) !important;
+      }
+      .btn-voce-nao-falhou {
+        font-size: 0.78rem !important;
+        padding: 14px 28px !important;
+      }
+    }
+
+</style>
+</head>
+<body class="kit-noise kit-vignette">
+
+  <!-- ════════════════════════════════════════
+       FAIRY PARTICLES (background decorativo) — 20 partículas originais
+       ════════════════════════════════════════ -->
+  <div class="kit-fairy-container">
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+    <div class="fairy"></div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 1 — HERO
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark hero-section" style="padding-top: clamp(56px, 6vw, 92px);">
+    <!-- Ambient glow spheres -->
+    <div class="kit-ambient-glow">
+      <div class="kit-blur-sphere kit-blur-sphere--pink kit-blur-sphere--1"></div>
+      <div class="kit-blur-sphere kit-blur-sphere--purple kit-blur-sphere--2"></div>
+      <div class="kit-blur-sphere kit-blur-sphere--warm kit-blur-sphere--3"></div>
+    </div>
+    <div class="kit-container hero-content">
+
+      <p style="font-size: var(--kit-fs-body); color: var(--kit-text-secondary); letter-spacing: 0.04em; margin-bottom: 10px;">Dr. Wenderson Eustaquio &nbsp;·&nbsp; CRM 83012</p>
+
+      <h1 class="kit-h1 kit-heading-sliced" data-anim="scroll-eb" style="margin-top: 0; max-width: 100%; margin-right: auto;">
+        Seu corpo não responde porque ninguém investigou <span class="kit-caixa-destaque"><span class="kit-texto-gradiente">o que está bloqueando</span></span>
+      </h1>
+
+      <p class="kit-body-lg" data-anim="scroll-eb" style="margin-top: var(--kit-gap-md); max-width: 640px; margin-right: auto; color: var(--kit-text-muted);">
+        Dietas genéricas ignoram a biologia individual. Aqui, o ponto de partida são os seus exames — hormônios, metabolismo, microbiota — para criar um protocolo que funciona especificamente para o seu organismo.
+      </p>
+
+      <div data-anim="scroll-eb" style="margin-top: var(--kit-gap-xl);">
+        <a href="#oferta" class="kit-btn-primary">
+          QUERO DESCOBRIR O QUE ESTÁ BLOQUEANDO MEU CORPO
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO — O PONTO DA DOR
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark kit-section-glow-top">
+    <div class="kit-container">
+
+      <p class="kit-label kit-text-center" data-anim="scroll-eb" style="letter-spacing: var(--kit-ls-label); text-transform: uppercase; color: var(--kit-primary-light);">
+        O ponto onde quase todo paciente chega
+      </p>
+
+      <h2 class="kit-h2 kit-heading-sliced kit-text-center" data-anim="scroll-eb" style="margin-top: var(--kit-gap-sm); max-width: 800px; margin-left: auto; margin-right: auto;">
+        Chegou um ponto em que você parou de acreditar que o seu corpo pode mudar?
+      </h2>
+
+      <p class="kit-body kit-text-center" data-anim="scroll-eb" style="margin-top: var(--kit-gap-md); color: var(--kit-text-muted); max-width: 580px; margin-left: auto; margin-right: auto; font-style: italic;">
+        Não é desistência. É o resultado natural de tentar muito, sem entender o que está bloqueando.
+      </p>
+
+      <div class="kit-grid kit-grid--3" style="margin-top: var(--kit-gap-xl);" data-anim-stagger="80">
+
+        <div data-anim="scroll-eb" style="display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--kit-border-subtle);padding-bottom:clamp(24px,3vw,36px);">
+          <div style="width:42px;height:42px;border:1px solid var(--kit-border-subtle);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--kit-primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4 style="font-family:var(--kit-font-heading);font-size:var(--kit-fs-body-lg);font-weight:var(--kit-fw-semibold);color:var(--kit-primary-light);margin:0;">Treina com consistência mas não evolui</h4>
+          <p style="font-size:var(--kit-fs-body);color:var(--kit-text-muted);line-height:var(--kit-lh-body);margin:0;">Sem o estímulo hormonal correto, hipertrofia e força ficam estagnadas — não importa o volume de treino.</p>
+        </div>
+
+        <div data-anim="scroll-eb" data-anim-delay="80" style="display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--kit-border-subtle);padding-bottom:clamp(24px,3vw,36px);">
+          <div style="width:42px;height:42px;border:1px solid var(--kit-border-subtle);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--kit-primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          </div>
+          <h4 style="font-family:var(--kit-font-heading);font-size:var(--kit-fs-body-lg);font-weight:var(--kit-fw-semibold);color:var(--kit-primary-light);margin:0;">Já fez dezenas de dietas e voltou a engordar</h4>
+          <p style="font-size:var(--kit-fs-body);color:var(--kit-text-muted);line-height:var(--kit-lh-body);margin:0;">O corpo regula leptina, grelina e insulina. Restrição repetida desorganiza esses sinais — não é falta de força de vontade.</p>
+        </div>
+
+        <div data-anim="scroll-eb" data-anim-delay="160" style="display:flex;flex-direction:column;gap:14px;border-bottom:1px solid var(--kit-border-subtle);padding-bottom:clamp(24px,3vw,36px);">
+          <div style="width:42px;height:42px;border:1px solid var(--kit-border-subtle);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--kit-primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4 style="font-family:var(--kit-font-heading);font-size:var(--kit-fs-body-lg);font-weight:var(--kit-fw-semibold);color:var(--kit-primary-light);margin:0;">Sente que seu corpo não responde mais</h4>
+          <p style="font-size:var(--kit-fs-body);color:var(--kit-text-muted);line-height:var(--kit-lh-body);margin:0;">Metabolismo adaptativo: o organismo conserva energia quando se sente sob ameaça crônica.</p>
+        </div>
+
+        <div data-anim="scroll-eb" data-anim-delay="240" style="display:flex;flex-direction:column;gap:14px;">
+          <div style="width:42px;height:42px;border:1px solid var(--kit-border-subtle);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--kit-primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </div>
+          <h4 style="font-family:var(--kit-font-heading);font-size:var(--kit-fs-body-lg);font-weight:var(--kit-fw-semibold);color:var(--kit-primary-light);margin:0;">Acorda cansado mesmo dormindo o suficiente</h4>
+          <p style="font-size:var(--kit-fs-body);color:var(--kit-text-muted);line-height:var(--kit-lh-body);margin:0;">Cortisol desregulado e baixa qualidade de sono profundo bloqueiam a recuperação real do corpo.</p>
+        </div>
+
+        <div data-anim="scroll-eb" data-anim-delay="320" style="display:flex;flex-direction:column;gap:14px;">
+          <div style="width:42px;height:42px;border:1px solid var(--kit-border-subtle);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--kit-primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h4 style="font-family:var(--kit-font-heading);font-size:var(--kit-fs-body-lg);font-weight:var(--kit-fw-semibold);color:var(--kit-primary-light);margin:0;">Rendimento e foco mental caíram</h4>
+          <p style="font-size:var(--kit-fs-body);color:var(--kit-text-muted);line-height:var(--kit-lh-body);margin:0;">Hormônios tireoidianos, testosterona e neurotransmissores estão diretamente ligados à clareza cognitiva.</p>
+        </div>
+
+        <div data-anim="scroll-eb" data-anim-delay="400" style="display:flex;flex-direction:column;gap:14px;">
+          <div style="width:42px;height:42px;border:1px solid var(--kit-border-subtle);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--kit-primary-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h4 style="font-family:var(--kit-font-heading);font-size:var(--kit-fs-body-lg);font-weight:var(--kit-fw-semibold);color:var(--kit-primary-light);margin:0;">Cansado de se sentir mal no próprio corpo</h4>
+          <p style="font-size:var(--kit-fs-body);color:var(--kit-text-muted);line-height:var(--kit-lh-body);margin:0;">Não é vaidade. É o sinal de que algo internamente precisa ser investigado — e tem solução.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO — VOCÊ NÃO FALHOU
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark-alt" style="text-align:center;position:relative;overflow:hidden;">
+    <div class="kit-ambient-glow">
+      <div class="kit-blur-sphere kit-blur-sphere--pink kit-blur-sphere--2"></div>
+      <div class="kit-blur-sphere kit-blur-sphere--purple kit-blur-sphere--4"></div>
+    </div>
+    <div class="kit-container" style="max-width:760px;position:relative;z-index:2;">
+
+      <h2 class="kit-heading-sliced voce-nao-falhou-h2" data-anim="scroll-eb" style="font-family:var(--kit-font-heading);font-size:clamp(2.8rem,7vw,5.5rem);font-weight:var(--kit-fw-extrabold);line-height:1.05;background:linear-gradient(180deg,#FFFFFF 45%,#666666 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+        Você não falhou.
+      </h2>
+
+      <p data-anim="scroll-eb" style="margin-top:var(--kit-gap-lg);font-size:clamp(1.1rem,2.5vw,1.45rem);color:var(--kit-text-muted);font-style:italic;line-height:1.55;max-width:600px;margin-left:auto;margin-right:auto;">
+        Você tentou as estratégias certas para um corpo que não era o seu.
+      </p>
+
+      <div data-anim="scroll-eb" style="margin-top:var(--kit-gap-xl);">
+        <div class="kit-line-glow" style="margin:0 auto;"></div>
+      </div>
+
+      <p class="kit-body" data-anim="scroll-eb" style="margin-top:var(--kit-gap-xl);color:var(--kit-text-muted);line-height:1.85;max-width:680px;margin-left:auto;margin-right:auto;">
+        Quando o ambiente hormonal está desregulado, mais dieta e mais treino têm retorno decrescente. O corpo interpreta restrição como ameaça e reage conservando gordura, aumentando fome e reduzindo gasto energético. Não é falta de foco, <strong style="color:var(--kit-text-primary);">é biologia.</strong> E biologia tem solução — desde que o ponto de partida seja o diagnóstico correto do seu organismo, não um protocolo que já foi aplicado em mil pessoas antes de você.
+      </p>
+
+      <div data-anim="scroll-eb" style="margin-top:var(--kit-gap-xl);display:flex;justify-content:center;">
+        <a href="#oferta" class="kit-btn-primary btn-voce-nao-falhou">
+          QUERO DESCOBRIR O QUE ESTÁ BLOQUEANDO MEU CORPO →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 3 — TRANSFORMAÇÃO (o que você será capaz)
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark">
+    <div class="kit-container" style="max-width: 900px;">
+
+      <h2 class="kit-h2 kit-heading-sliced kit-text-center" data-anim="scroll-eb">
+        Com o protocolo certo, você vai <span class="kit-caixa-destaque"><span class="kit-texto-gradiente">ser capaz de</span></span>
+      </h2>
+
+      <div class="kit-grid kit-grid--2" style="margin-top: var(--kit-gap-xl); gap: clamp(24px, 4vw, 48px);">
+
+        <ul class="gain-list" data-anim="scroll-eb">
+          <li>Emagrecer sem passar fome ou seguir dietas genéricas</li>
+          <li>Ter energia real ao longo do dia, sem picos e quedas</li>
+          <li>Regularizar hormônios que afetam peso, humor e sono</li>
+        </ul>
+
+        <ul class="gain-list" data-anim="scroll-eb" data-anim-delay="200">
+          <li>Recuperar a qualidade do sono e o foco mental</li>
+          <li>Entender por que o seu corpo reagia diferente ao treino</li>
+          <li>Ver resultados duradouros porque a causa foi tratada</li>
+        </ul>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div style="height: 60px; background: linear-gradient(to bottom, #0C0C0C 0%, #1B1B1B 100%); margin: 0; padding: 0;"></div>
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 4 — PROVA SOCIAL / DEPOIMENTOS
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark kit-section-glow-top" style="padding-bottom: var(--kit-section-py);">
+    <div class="kit-container">
+
+      <h2 class="kit-h2 kit-heading-sliced kit-text-center" data-anim="scroll-eb">
+        Quem recebeu o diagnóstico certo, <span class="kit-caixa-destaque"><span class="kit-texto-gradiente">já colhe resultados</span></span>
+      </h2>
+
+      <p class="kit-body kit-text-center" data-anim="scroll-eb" style="margin-top: var(--kit-gap-md); color: var(--kit-text-muted); max-width: 560px; margin-left: auto; margin-right: auto;">
+        Não funciona só pra quem tem muito peso a perder. Funciona pra quem tem o bloqueio identificado e tratado — e os resultados dos pacientes comprovam.
+      </p>
+
+    </div>
+
+    <!-- Carrossel automático de depoimentos -->
+    <div class="depo-carousel-outer" style="margin-top: var(--kit-gap-xl);">
+      <div class="depo-carousel-track">
+        <!-- Itens originais -->
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/Cy9ply1.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/acZPOQw.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/FPBqakB.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/h1VwRWr.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/4pJPeqQ.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/w9Caz3C.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/f1qNpkA.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/0iEa9iC.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/pwUi0l8.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/RKAI9Jk.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/AU0QNsg.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/IvL5DGi.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/fC3tSZC.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <!-- Duplicados para loop contínuo -->
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/Cy9ply1.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/acZPOQw.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/FPBqakB.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/h1VwRWr.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/4pJPeqQ.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/w9Caz3C.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/f1qNpkA.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/0iEa9iC.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/pwUi0l8.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/RKAI9Jk.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/AU0QNsg.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/IvL5DGi.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/fC3tSZC.jpeg" alt="Resultado paciente" loading="lazy"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 5 — COMPARAÇÃO (Antes × Depois)
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark">
+    <div class="kit-container" style="max-width: 900px;">
+
+      <h2 class="kit-h2 kit-heading-sliced kit-text-center" data-anim="scroll-eb">
+        Dieta genérica vs. <span class="kit-texto-gradiente">protocolo individualizado</span>
+      </h2>
+
+      <div class="compare-table" data-anim="scroll-eb" style="margin-top: var(--kit-gap-xl);">
+        <div class="compare-row compare-row--header">
+          <span style="color: var(--kit-text-muted); text-align: left;">O que muda</span>
+          <span style="color: var(--kit-text-secondary);">Dieta Comum</span>
+          <span style="color: var(--kit-primary-light);">Protocolo Dr. W</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-feature">Parte dos seus exames reais</span>
+          <span class="compare-cross">✕</span>
+          <span class="compare-check">✓</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-feature">Identifica bloqueios hormonais</span>
+          <span class="compare-cross">✕</span>
+          <span class="compare-check">✓</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-feature">Trata a causa, não o sintoma</span>
+          <span class="compare-cross">✕</span>
+          <span class="compare-check">✓</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-feature">Ajusta conforme sua evolução</span>
+          <span class="compare-cross">✕</span>
+          <span class="compare-check">✓</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-feature">Considera metabolismo e microbiota</span>
+          <span class="compare-cross">✕</span>
+          <span class="compare-check">✓</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-feature">Resultado sustentável e duradouro</span>
+          <span class="compare-cross">✕</span>
+          <span class="compare-check">✓</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-feature">Melhora energia, foco e composição</span>
+          <span class="compare-cross">✕</span>
+          <span class="compare-check">✓</span>
+        </div>
+      <div style="margin-top: var(--kit-gap-xl); text-align: center;" data-anim="scroll-eb">
+        <a href="#oferta" class="kit-btn-primary">QUERO ESSE RESULTADO TAMBÉM</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 6 — MÓDULOS DO CURSO
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark-alt kit-section-glow-top" style="background-color: #0b0b0b; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px;">
+    <div class="kit-container">
+
+      <p class="kit-label kit-text-center" data-anim="scroll-eb" style="letter-spacing: var(--kit-ls-label); text-transform: uppercase; color: var(--kit-primary-light);">
+        O método
+      </p>
+
+      <h2 class="kit-h2 kit-heading-sliced kit-text-center" data-anim="scroll-eb" style="margin-top: var(--kit-gap-sm);">
+        O ponto de partida não é o cardápio. <span class="kit-caixa-destaque"><span class="kit-texto-gradiente">É o seu corpo.</span></span>
+      </h2>
+
+      <p class="kit-body kit-text-center" data-anim="scroll-eb" style="margin-top: var(--kit-gap-md); color: var(--kit-text-muted); max-width: 620px; margin-left: auto; margin-right: auto;">
+        Dois pacientes com o mesmo peso, a mesma dieta e o mesmo treino podem ter resultados completamente opostos. O que muda não é a disciplina — é o funcionamento interno de cada um: hormônios, metabolismo, microbiota, nível de cortisol, qualidade de sono.
+      </p>
+
+      <div class="kit-grid kit-grid--3" data-anim-stagger="100" style="margin-top: var(--kit-gap-xl);">
+
+        <div class="modulo-card kit-card-glow" data-anim="scroll-eb">
+          <div class="modulo-number">01</div>
+          <div class="modulo-title">Equilíbrio Hormonal</div>
+          <p class="modulo-desc">Investigação e ajuste do eixo que regula gordura, energia e recuperação.</p>
+        </div>
+
+        <div class="modulo-card kit-card-glow" data-anim="scroll-eb" data-anim-delay="100">
+          <div class="modulo-number">02</div>
+          <div class="modulo-title">Nutrição de Precisão</div>
+          <p class="modulo-desc">Alimentação alinhada ao seu metabolismo real, não a uma fórmula genérica.</p>
+        </div>
+
+        <div class="modulo-card kit-card-glow" data-anim="scroll-eb" data-anim-delay="200">
+          <div class="modulo-number">03</div>
+          <div class="modulo-title">Suplementação Estratégica</div>
+          <p class="modulo-desc">Baseada em deficiências identificadas em exames, não em modismos.</p>
+        </div>
+
+        <div class="modulo-card kit-card-glow" data-anim="scroll-eb" data-anim-delay="300">
+          <div class="modulo-number">04</div>
+          <div class="modulo-title">Manejo de Cortisol</div>
+          <p class="modulo-desc">Estresse crônico sabota hormônios e bloqueia o emagrecimento sustentável.</p>
+        </div>
+
+        <div class="modulo-card kit-card-glow" data-anim="scroll-eb" data-anim-delay="400">
+          <div class="modulo-number">05</div>
+          <div class="modulo-title">Sono e Recuperação</div>
+          <p class="modulo-desc">Onde o corpo produz GH, regula leptina e consolida o resultado metabólico.</p>
+        </div>
+
+        <div class="modulo-card kit-card-glow" data-anim="scroll-eb" data-anim-delay="500">
+          <div class="modulo-number">06</div>
+          <div class="modulo-title">Acompanhamento Contínuo</div>
+          <p class="modulo-desc">Protocolo não é algo que se entrega e esquece — é ajustado conforme seu corpo responde, com base em exames e evolução.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 7 — BÔNUS
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark">
+    <div class="kit-container">
+
+      <h2 class="kit-h2 kit-heading-sliced kit-text-center" data-anim="scroll-eb">
+        Além do protocolo, sua consulta <span class="kit-caixa-destaque"><span class="kit-texto-gradiente">inclui</span></span>
+      </h2>
+
+      <div class="kit-grid kit-grid--3" data-anim-stagger="120" style="margin-top: var(--kit-gap-xl);">
+
+        <div class="bonus-card" data-anim="scroll-eb">
+          <div class="bonus-label">Incluso 01</div>
+          <h4 class="kit-h4" style="margin-top: 8px; color: var(--kit-text-primary);">Análise Completa de Exames</h4>
+          <p class="kit-body" style="margin-top: 8px; color: var(--kit-text-muted);">Interpretação detalhada dos seus exames laboratoriais, identificando deficiências e desequilíbrios que passam despercebidos em consultas convencionais.</p>
+        </div>
+
+        <div class="bonus-card" data-anim="scroll-eb" data-anim-delay="120">
+          <div class="bonus-label">Incluso 02</div>
+          <h4 class="kit-h4" style="margin-top: 8px; color: var(--kit-text-primary);">Plano Alimentar Adaptativo</h4>
+          <p class="kit-body" style="margin-top: 8px; color: var(--kit-text-muted);">Cardápio desenvolvido para o seu metabolismo específico, ajustado conforme sua evolução — sem fórmulas prontas ou restrições desnecessárias.</p>
+        </div>
+
+        <div class="bonus-card" data-anim="scroll-eb" data-anim-delay="240">
+          <div class="bonus-label">Incluso 03</div>
+          <h4 class="kit-h4" style="margin-top: 8px; color: var(--kit-text-primary);">Prescrição de Medicamentos</h4>
+          <p class="kit-body" style="margin-top: 8px; color: var(--kit-text-muted);">Quando necessário, a prescrição médica já sai na consulta — hormônios, fitoterápicos ou medicamentos de suporte metabólico, tudo dentro do seu protocolo.</p>
+        </div>
+
+        <div class="bonus-card" data-anim="scroll-eb" data-anim-delay="360">
+          <div class="bonus-label">Incluso 04</div>
+          <h4 class="kit-h4" style="margin-top: 8px; color: var(--kit-text-primary);">Suporte e Tira-Dúvidas</h4>
+          <p class="kit-body" style="margin-top: 8px; color: var(--kit-text-muted);">Canal direto para esclarecer dúvidas entre as consultas. Porque o processo não para quando você sai do consultório.</p>
+        </div>
+
+        <div class="bonus-card" data-anim="scroll-eb" data-anim-delay="480">
+          <div class="bonus-label">Incluso 05</div>
+          <h4 class="kit-h4" style="margin-top: 8px; color: var(--kit-text-primary);">CANETINHAS COM PREÇO ESPECIAL!</h4>
+          <p class="kit-body" style="margin-top: 8px; color: var(--kit-text-muted);">Acesso aos análogos de GLP-1 injetáveis mais modernos, com condições especiais para pacientes em protocolo.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 9 — URGÊNCIA / CUSTO DA INAÇÃO
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark">
+    <div class="kit-container">
+
+      <div class="kit-card urgency-grid" data-anim="scroll-eb" style="display: grid; grid-template-columns: 1fr 1fr; padding: clamp(32px, 5vw, 56px); background: linear-gradient(135deg, var(--kit-bg-dark-alt) 0%, rgba(22,163,74,0.06) 100%); align-items: center; gap: clamp(24px, 4vw, 48px); border: 1px solid var(--kit-border-subtle);">
+
+        <div>
+          <h2 class="kit-h3 kit-heading-sliced">
+            Cada mês sem diagnóstico é mais um mês com o corpo travado.
+          </h2>
+          <p class="kit-body" style="margin-top: var(--kit-gap-md); color: var(--kit-text-muted);">
+            Enquanto você tenta mais uma dieta genérica, o desequilíbrio hormonal que está bloqueando seus resultados continua ativo. A causa não some sozinha — ela precisa ser investigada e tratada.
+          </p>
+        </div>
+
+        <div>
+          <p class="kit-body" style="color: var(--kit-text-muted);">
+            Quantas dietas você já tentou? Quantas horas de treino sem resultado? O problema nunca foi você. Foi a falta do diagnóstico certo para o seu organismo específico.
+          </p>
+          <h2 class="kit-h3 kit-heading-sliced" style="margin-top: var(--kit-gap-md);">
+            Quando você trata a causa, o resultado <span class="kit-texto-gradiente">finalmente vem.</span>
+          </h2>
+          <div style="margin-top: var(--kit-gap-lg);">
+            <a href="#oferta" class="kit-btn-primary" style="width: 100%; max-width: 100%; box-sizing: border-box;">
+              QUERO AGENDAR MINHA CONSULTA
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 10 — SOBRE O CRIADOR
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark-alt">
+    <div class="kit-container kit-perspectiva3d">
+
+      <div class="about-section-inner" data-anim="scroll-eb" style="display: flex; flex-direction: row; align-items: flex-start; gap: clamp(32px, 5vw, 64px);">
+
+        <!-- Foto à esquerda -->
+        <div class="about-photo-wrap" style="flex-shrink: 0;">
+          <img src="https://placehold.co/300x380/222222/ffffff?text=Dr.+Wenderson" alt="Dr. Wenderson — Médico Nutrólogo" loading="lazy">
+        </div>
+
+        <!-- Textos à direita -->
+        <div class="about-section-text" style="flex: 1;">
+          <p class="kit-label" style="letter-spacing: var(--kit-ls-label); text-transform: uppercase; color: var(--kit-text-muted);">
+            Quem vai te atender
+          </p>
+
+          <h2 class="kit-h2" style="margin-top: var(--kit-gap-sm);">
+            Dr. <span class="kit-texto-gradiente">Wenderson</span>
+          </h2>
+
+          <p class="kit-body" style="margin-top: var(--kit-gap-md); color: var(--kit-text-muted); line-height: var(--kit-lh-body);">
+            Médico especialista em nutrologia e medicina do estilo de vida, com foco em protocolos individualizados baseados em biologia metabólica e análise hormonal. Formado e especializado para ir além do cardápio — investigar o que está bloqueando o seu organismo.
+          </p>
+          <p class="kit-body" style="margin-top: var(--kit-gap-md); color: var(--kit-text-muted); line-height: var(--kit-lh-body);">
+            Depois de anos atendendo pacientes que faziam tudo certo mas não evoluíam, desenvolvi um método de investigação interna que identifica os bloqueios reais: hormônios, metabolismo, microbiota, cortisol. Porque a solução começa onde a <strong style="color: var(--kit-text-primary);">causa está</strong>.
+          </p>
+
+          <div style="margin-top: var(--kit-gap-lg);">
+            <a href="#oferta" class="kit-btn-primary">
+              QUERO ME CONSULTAR COM VOCÊ
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO 12 — FAQ
+       ════════════════════════════════════════ -->
+  <section class="kit-section kit-section--dark-alt">
+    <div class="kit-container" style="max-width: 750px;">
+
+      <h2 class="kit-h2 kit-heading-sliced kit-text-center" data-anim="scroll-eb">
+        Perguntas <span class="kit-texto-gradiente">frequentes</span>
+      </h2>
+
+      <div style="margin-top: var(--kit-gap-xl);" data-anim="scroll-eb">
+
+        <div class="faq-item">
+          <button class="faq-question">Para quem é indicada a consulta com Dr. Wenderson?</button>
+          <div class="faq-answer">
+            <p>Para qualquer pessoa que já tentou dietas, treinos e suplementação sem resultado consistente. Especialmente indicado para quem sente cansaço crônico, dificuldade para emagrecer, alterações hormonais, queda de libido, dificuldade de concentração ou qualquer sintoma que ainda não teve uma causa investigada.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">O que é avaliado na consulta?</button>
+          <div class="faq-answer">
+            <p>A consulta inclui análise clínica completa, revisão do histórico alimentar e metabólico, e leitura aprofundada de exames laboratoriais. A partir disso, identificamos desequilíbrios hormonais, carências nutricionais e bloqueios metabólicos — e montamos um protocolo individualizado para o seu organismo.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Preciso levar exames na consulta?</button>
+          <div class="faq-answer">
+            <p>Se você já tem exames recentes, traga-os — eles aceleram o diagnóstico. Caso não tenha, o Dr. Wenderson solicitará os exames necessários durante a consulta e o protocolo será montado após o recebimento dos resultados.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">As consultas são presenciais ou online?</button>
+          <div class="faq-answer">
+            <p>Realizamos consultas em ambas as modalidades. A consulta online é tão completa quanto a presencial — com análise de exames, protocolo detalhado e acompanhamento contínuo. O importante é garantir que você receba o cuidado que merece, independentemente de onde está.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Como funciona o acompanhamento após a consulta?</button>
+          <div class="faq-answer">
+            <p>O protocolo é revisado regularmente conforme sua evolução e os resultados dos exames de retorno. O acompanhamento é parte essencial do método — porque o corpo responde em fases, e o plano precisa ser ajustado ao longo do processo para maximizar os resultados.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Quais formas de pagamento são aceitas?</button>
+          <div class="faq-answer">
+            <p>Aceitamos cartão de crédito, PIX e transferência bancária. Para mais detalhes sobre valores e parcelamento, entre em contato diretamente pelo botão de agendamento.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Em quanto tempo começo a ver resultados?</button>
+          <div class="faq-answer">
+            <p>Depende de cada organismo e do nível de desequilíbrio encontrado, mas a maioria dos pacientes já relata melhora significativa na energia e bem-estar nas primeiras semanas. Resultados estéticos e de composição corporal costumam se consolidar entre 4 e 12 semanas de protocolo ativo.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════════════════════════════
+       SEÇÃO LOCALIZAÇÃO
+       ════════════════════════════════════════ -->
+  <section id="oferta" style="background-color: #141414; padding: 80px 0; position: relative; overflow: hidden;">
+    <div class="kit-container" style="position: relative; z-index: 2;">
+      <div data-anim="scroll-eb" style="display: flex; flex-direction: row; align-items: stretch; gap: 48px; flex-wrap: wrap;">
+
+        <!-- Esquerda: Informações -->
+        <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; justify-content: center; gap: var(--kit-gap-lg);">
+          <div>
+            <p class="kit-label" style="letter-spacing: var(--kit-ls-label); text-transform: uppercase; color: var(--kit-primary-light); margin-bottom: var(--kit-gap-md);">
+              Onde nos encontrar
+            </p>
+            <h2 class="kit-h2 kit-heading-sliced">
+              Venha nos <span class="kit-texto-gradiente">visitar</span>
+            </h2>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--kit-gap-md);">
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink:0; margin-top:2px;" stroke="var(--kit-primary-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <p style="color: var(--kit-text-primary); font-weight: var(--kit-fw-semibold); font-size: var(--kit-fs-body);">Endereço</p>
+                <p style="color: var(--kit-text-muted); font-size: var(--kit-fs-body); line-height: 1.5; margin-top: 2px;">R. Dr. Veloso, 760 — Sala 5<br>Centro, Montes Claros — MG<br>CEP 39400-074</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;" stroke="var(--kit-primary-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+              <div>
+                <p style="color: var(--kit-text-primary); font-weight: var(--kit-fw-semibold); font-size: var(--kit-fs-body);">Contato</p>
+                <a href="tel:+5538998134781" style="color: var(--kit-primary-light); font-size: var(--kit-fs-body); text-decoration: none; margin-top: 2px; display: block;">(38) 99813-4781</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5538998134781" target="_blank" rel="noopener" class="kit-btn-primary kit-btn-pulse" style="align-self: flex-start;">
+            AGENDAR PELO WHATSAPP
+          </a>
+        </div>
+
+        <!-- Direita: Mapa -->
+        <div style="flex: 1.4; min-width: 280px; border-radius: var(--kit-radius-lg); overflow: hidden; border: 1px solid var(--kit-border-subtle); min-height: 340px;">
+          <iframe
+            src="https://maps.google.com/maps?q=R.+Dr.+Veloso,+760,+Centro,+Montes+Claros,+MG,+39400-074&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0; display:block; min-height: 340px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização do consultório Dr. Wenderson">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════ -->
+  <footer class="kit-section kit-section--dark-alt" style="padding: var(--kit-gap-xl) 0 var(--kit-gap-lg);">
+    <div class="kit-container kit-text-center">
+
+      <div class="kit-line-glow" style="margin-bottom: var(--kit-gap-xl);"></div>
+
+      <p class="kit-h4" style="color: var(--kit-text-primary); font-weight: var(--kit-fw-bold);">Dr. Wenderson <span class="kit-texto-gradiente">Eustaquio</span></p>
+      <p style="margin-top: var(--kit-gap-sm); color: var(--kit-text-secondary); font-size: var(--kit-fs-caption);">Médico Nutrólogo — CRM 83012</p>
+
+      <p style="margin-top: var(--kit-gap-lg); max-width: 600px; margin-left: auto; margin-right: auto; color: var(--kit-text-secondary); font-size: var(--kit-fs-caption); line-height: 1.6;">
+        6 anos na área com a nossa clínica
+      </p>
+
+      <p style="margin-top: var(--kit-gap-md); color: var(--kit-text-secondary); font-size: var(--kit-fs-caption);">
+        TODOS OS DIREITOS RESERVADOS &copy; 2026 — Dr. Wenderson
+      </p>
+
+      <nav style="margin-top: var(--kit-gap-md); display: flex; justify-content: center; gap: var(--kit-gap-md);">
+        <a href="#" style="color: var(--kit-text-secondary); font-size: var(--kit-fs-caption); text-decoration: underline; text-underline-offset: 3px;">
+          POLÍTICA DE PRIVACIDADE
+        </a>
+        <a href="#" style="color: var(--kit-text-secondary); font-size: var(--kit-fs-caption); text-decoration: underline; text-underline-offset: 3px;">
+          TERMOS DE USO
+        </a>
+      </nav>
+
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════
+       SCRIPTS
+       ════════════════════════════════════════ -->
+
+  <!-- GSAP + ScrollTrigger (para perspectiva 3D) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Kit animations -->
+  <script src="assets/js/animations.js" defer></script>
+
+  <!-- Page-specific JS -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ── FAQ accordion ── */
+      document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = btn.parentElement;
+          var isActive = item.classList.contains('active');
+
+          // Close all
+          document.querySelectorAll('.faq-item').forEach(function(el) {
+            el.classList.remove('active');
+          });
+
+          // Open clicked (if wasn't active)
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      /* ── Perspectiva 3D (GSAP ScrollTrigger) — aguarda scripts deferred ── */
+      window.addEventListener('load', function() {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+          document.querySelectorAll('.kit-perspectiva3d').forEach(function(el) {
+            el.style.transform = 'perspective(1000px) rotateX(45deg)';
+            el.style.transformOrigin = 'center bottom';
+            el.style.willChange = 'transform';
+
+            gsap.to(el, {
+              rotateX: 0,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 90%',
+                end: 'top 30%',
+                scrub: true
+              }
+            });
+          });
+        }
+      });
+
+      /* ── Smooth scroll para links internos ── */
+      document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          var href = link.getAttribute('href');
+          // Ignora links vazios/placeholder para evitar erro de seletor invalido ("#")
+          if (!href || href === '#') return;
+
+          var target = document.querySelector(href);
+          if (!target) return;
+
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      /* ── Tab title change (engagement trick) ── */
+      var originalTitle = document.title;
+      var altTitles = ['👀 Seu corpo tem resposta!', '🩺 Agende sua consulta'];
+      var titleIndex = 0;
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          titleIndex = (titleIndex + 1) % altTitles.length;
+          document.title = altTitles[titleIndex];
+        } else {
+          document.title = originalTitle;
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
+
