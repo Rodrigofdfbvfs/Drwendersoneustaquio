@@ -402,19 +402,20 @@
       animation-play-state: paused;
     }
     .depo-carousel-item {
-      flex: 0 0 clamp(240px, 28vw, 340px);
+      flex: 0 0 clamp(200px, 22vw, 280px);
+      aspect-ratio: 9 / 16;
       border-radius: 0;
       overflow: hidden;
       border: none;
-      background: transparent;
+      background: #111;
       box-shadow: none;
     }
     .depo-carousel-item img {
       display: block;
       width: 100%;
-      height: auto;
-      aspect-ratio: unset;
-      object-fit: unset;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
     }
     .depo-carousel-outer::before,
     .depo-carousel-outer::after {
@@ -819,19 +820,19 @@
     <div class="depo-carousel-outer" style="margin-top: var(--kit-gap-xl);">
       <div class="depo-carousel-track">
         <!-- Itens originais -->
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/Cy9ply1.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/acZPOQw.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/FPBqakB.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/h1VwRWr.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/4pJPeqQ.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/w9Caz3C.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/f1qNpkA.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/0iEa9iC.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/pwUi0l8.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/RKAI9Jk.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/AU0QNsg.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/IvL5DGi.jpeg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="https://i.imgur.com/fC3tSZC.jpeg" alt="Resultado paciente" loading="lazy"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/Cy9ply1.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/acZPOQw.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/FPBqakB.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/h1VwRWr.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/4pJPeqQ.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/w9Caz3C.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/f1qNpkA.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/0iEa9iC.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/pwUi0l8.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/RKAI9Jk.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/AU0QNsg.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/IvL5DGi.jpeg" alt="Resultado paciente" loading="eager"></div>
+        <div class="depo-carousel-item"><img src="https://i.imgur.com/fC3tSZC.jpeg" alt="Resultado paciente" loading="eager"></div>
         <!-- Duplicados para loop contínuo -->
         <div class="depo-carousel-item"><img src="https://i.imgur.com/Cy9ply1.jpeg" alt="Resultado paciente" loading="lazy"></div>
         <div class="depo-carousel-item"><img src="https://i.imgur.com/acZPOQw.jpeg" alt="Resultado paciente" loading="lazy"></div>
