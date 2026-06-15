@@ -73,6 +73,17 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
+      background-image: url('assets/img/hero-desktop.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(12,12,12,0.82) 0%, rgba(12,12,12,0.55) 55%, rgba(12,12,12,0.15) 100%);
+      z-index: 1;
     }
     .hero-content {
       position: relative;
@@ -515,6 +526,16 @@
        MOBILE RESPONSIVE
        ══════════════════════════════════════════ */
     @media (max-width: 767px) {
+      /* Hero mobile — imagem ancorada no topo, corte pela base */
+      .hero-section {
+        background-image: url('assets/img/hero-mobile.jpg') !important;
+        background-position: top center !important;
+        background-size: cover !important;
+      }
+      .hero-section::before {
+        background: linear-gradient(180deg, rgba(12,12,12,0.25) 0%, rgba(12,12,12,0.65) 60%, rgba(12,12,12,0.90) 100%) !important;
+      }
+
       /* Compare table mobile */
       .compare-row { grid-template-columns: 1fr 60px 60px; }
       .compare-row--header span { font-size: 0.6rem; letter-spacing: 0; }
