@@ -193,7 +193,7 @@ body {
   left: 50%;
   transform: translateX(-50%) scaleX(1);
   background: var(--kit-gradient-caption-glow);
-  box-shadow: 0 9px 27.1px 0 #BEE0C3;
+  box-shadow: 0 9px 27.1px 0 #E8D9A8;
   border-radius: var(--kit-radius-pill);
 }
 
