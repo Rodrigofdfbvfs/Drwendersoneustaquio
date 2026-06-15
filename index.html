@@ -74,15 +74,16 @@
       overflow: hidden;
       isolation: isolate;
       background-image: url('assets/img/hero-desktop.jpg');
-      background-size: cover;
-      background-position: center center;
+      background-size: contain;
+      background-position: right top;
       background-repeat: no-repeat;
+      background-color: var(--kit-bg-dark);
     }
     .hero-section::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(12,12,12,0.82) 0%, rgba(12,12,12,0.55) 55%, rgba(12,12,12,0.15) 100%);
+      background: transparent;
       z-index: 1;
     }
     .hero-content {
