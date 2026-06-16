@@ -393,35 +393,37 @@
       color: var(--kit-primary-light);
     }
 
-    /* Carrossel de depoimentos (loop contínuo) */
-    .depo-carousel-outer {
+    /* Carrossel de depoimentos (manual com setas) */
+    .depo-carousel-wrap {
       position: relative;
       width: 100%;
-      overflow: hidden;
-      padding: 6px 0;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      margin-top: var(--kit-gap-xl);
     }
+    .depo-carousel-outer {
+      width: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 6px 0;
+    }
+    .depo-carousel-outer::-webkit-scrollbar { display: none; }
     .depo-carousel-track {
-      --depo-gap: 16px;
       display: flex;
       align-items: stretch;
-      gap: var(--depo-gap);
+      gap: 16px;
       width: max-content;
-      will-change: transform;
-      animation: depo-marquee 55s linear infinite;
-    }
-    .depo-carousel-outer:hover .depo-carousel-track {
-      animation-play-state: paused;
+      padding: 0 clamp(20px, 5vw, 80px);
     }
     .depo-carousel-item {
-      flex: 0 0 clamp(200px, 24vw, 300px);
-      height: clamp(280px, 50vw, 420px);
-      border-radius: 0;
+      flex: 0 0 clamp(220px, 26vw, 320px);
+      height: clamp(320px, 56vw, 460px);
+      scroll-snap-align: center;
+      border-radius: 10px;
       overflow: hidden;
-      border: none;
       background: #111;
-      box-shadow: none;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -433,35 +435,32 @@
       object-fit: contain;
       object-position: center;
     }
-    .depo-carousel-outer::before,
-    .depo-carousel-outer::after {
-      content: "";
+    .depo-arrow {
       position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100px;
-      pointer-events: none;
-      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--kit-border-subtle);
+      background: rgba(18,18,18,0.9);
+      color: var(--kit-text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+      backdrop-filter: blur(4px);
     }
-    .depo-carousel-outer::before {
-      left: 0;
-      background: linear-gradient(to right, rgba(12,12,12,0.95), rgba(12,12,12,0));
+    .depo-arrow:hover {
+      background: var(--kit-primary);
+      border-color: var(--kit-primary);
     }
-    .depo-carousel-outer::after {
-      right: 0;
-      background: linear-gradient(to left, rgba(12,12,12,0.95), rgba(12,12,12,0));
-    }
-
-    @keyframes depo-marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(calc(-50% - (var(--depo-gap) / 2))); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .depo-carousel-track {
-        animation: none;
-      }
-    }
+    .depo-arrow:active { transform: translateY(-50%) scale(0.92); }
+    .depo-arrow svg { width: 22px; height: 22px; }
+    .depo-arrow--prev { left: clamp(6px, 2vw, 24px); }
+    .depo-arrow--next { right: clamp(6px, 2vw, 24px); }
 
     /* Comparison table */
     .compare-table {
@@ -586,10 +585,8 @@
       }
 
       /* Responsividade geral */
-      .depo-carousel-outer::before,
-      .depo-carousel-outer::after { width: 60px; }
-      .depo-carousel-track { --depo-gap: 10px; }
-      .depo-carousel-item { flex-basis: clamp(150px, 45vw, 200px); }
+      .depo-carousel-item { flex-basis: min(78vw, 320px); }
+      .depo-arrow { width: 42px; height: 42px; }
       .about-section-inner { flex-direction: column !important; align-items: center !important; }
       .about-photo-wrap { width: 100% !important; max-width: 240px !important; margin: 0 auto !important; }
       .urgency-grid { grid-template-columns: 1fr !important; }
@@ -811,38 +808,31 @@
 
     </div>
 
-    <!-- Carrossel automático de depoimentos -->
-    <div class="depo-carousel-outer" style="margin-top: var(--kit-gap-xl);">
-      <div class="depo-carousel-track">
-        <!-- Itens originais -->
-        <div class="depo-carousel-item"><img src="assets/img/resultado-1.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-2.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-3.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-4.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-5.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-6.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-7.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-8.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-9.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-10.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-11.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-12.jpg" alt="Resultado paciente" loading="eager"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-13.jpg" alt="Resultado paciente" loading="eager"></div>
-        <!-- Duplicados para loop contínuo -->
-        <div class="depo-carousel-item"><img src="assets/img/resultado-1.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-2.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-3.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-4.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-5.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-6.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-7.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-8.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-9.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-10.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-11.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-12.jpg" alt="Resultado paciente" loading="lazy"></div>
-        <div class="depo-carousel-item"><img src="assets/img/resultado-13.jpg" alt="Resultado paciente" loading="lazy"></div>
+    <!-- Carrossel manual de depoimentos -->
+    <div class="depo-carousel-wrap" data-anim="scroll-eb">
+      <button class="depo-arrow depo-arrow--prev" type="button" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="depo-carousel-outer">
+        <div class="depo-carousel-track">
+          <div class="depo-carousel-item"><img src="assets/img/resultado-1.jpg" alt="Resultado paciente" loading="eager"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-2.jpg" alt="Resultado paciente" loading="eager"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-3.jpg" alt="Resultado paciente" loading="eager"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-4.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-5.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-6.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-7.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-8.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-9.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-10.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-11.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-12.jpg" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-13.jpg" alt="Resultado paciente" loading="lazy"></div>
+        </div>
       </div>
+      <button class="depo-arrow depo-arrow--next" type="button" aria-label="Próximo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
 
   </section>
@@ -1224,6 +1214,28 @@
   <script>
     (function() {
       'use strict';
+
+      /* ── Carrossel manual de depoimentos ── */
+      (function() {
+        var outer = document.querySelector('.depo-carousel-outer');
+        var track = document.querySelector('.depo-carousel-track');
+        var prev = document.querySelector('.depo-arrow--prev');
+        var next = document.querySelector('.depo-arrow--next');
+        if (!outer || !track || !prev || !next) return;
+
+        function step() {
+          var item = track.querySelector('.depo-carousel-item');
+          if (!item) return outer.clientWidth * 0.8;
+          var gap = parseInt(getComputedStyle(track).gap) || 16;
+          return item.getBoundingClientRect().width + gap;
+        }
+        prev.addEventListener('click', function() {
+          outer.scrollBy({ left: -step(), behavior: 'smooth' });
+        });
+        next.addEventListener('click', function() {
+          outer.scrollBy({ left: step(), behavior: 'smooth' });
+        });
+      })();
 
       /* ── FAQ accordion ── */
       document.querySelectorAll('.faq-question').forEach(function(btn) {
