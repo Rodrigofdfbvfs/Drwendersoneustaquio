@@ -40,7 +40,7 @@
     "@type": "Physician",
     "name": "Dr. Wenderson Eustaquio",
     "url": "https://www.drwendersoneustaquio.com.br/",
-    "image": "https://www.drwendersoneustaquio.com.br/assets/img/dr-wenderson.jpg",
+    "image": "https://www.drwendersoneustaquio.com.br/assets/img/dr-wenderson-optimized.jpg",
     "description": "Medicina nutricional personalizada com análise de exames e acompanhamento individualizado em Montes Claros e online.",
     "telephone": "+55 38 99813-4781",
     "address": {
@@ -59,8 +59,8 @@
   </script>
 
   <!-- Preload imagens críticas (LCP) -->
-  <link rel="preload" as="image" href="assets/img/capadesktop.jpg" media="(min-width: 768px)">
-  <link rel="preload" as="image" href="assets/img/CAPA CELULAR.png" media="(max-width: 767px)">
+  <link rel="preload" as="image" href="assets/img/hero-desktop.jpg" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/hero-mobile.jpg" media="(max-width: 767px)" fetchpriority="high">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,6 +144,14 @@
       max-width: min(680px, 56vw);
       margin-left: clamp(8px, 2vw, 24px);
       margin-right: auto;
+    }
+
+    /* O conteúdo principal deve aparecer imediatamente, sem depender de JavaScript. */
+    .hero-content [data-anim="scroll-eb"] {
+      opacity: 1;
+      filter: none;
+      transform: none;
+      transition: none;
     }
 
     /* Módulo cards */
@@ -864,21 +872,21 @@
       </button>
       <div class="depo-carousel-outer">
         <div class="depo-carousel-track">
-          <div class="depo-carousel-item"><img src="assets/img/resultado-3.jpg" alt="Resultado paciente" loading="eager"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-4.jpg" alt="Resultado paciente" loading="eager"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-6.jpg" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-9.jpg" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-11.jpg" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-12.jpg" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-13.jpg" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-14.jpg" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-16.png" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-17.png" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-18.png" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-19.png" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-20.png" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-21.png" alt="Resultado paciente" loading="lazy"></div>
-          <div class="depo-carousel-item"><img src="assets/img/resultado-22.png" alt="Resultado paciente" loading="lazy"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-3-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-4-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-6-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-9-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-11-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-12-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-13-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-14-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-16-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-17-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-18-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-19-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-20-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-21-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
+          <div class="depo-carousel-item"><img src="assets/img/resultado-22-optimized.jpg" alt="Resultado paciente" loading="lazy" decoding="async" width="960" height="960"></div>
         </div>
       </div>
       <button class="depo-arrow depo-arrow--next" type="button" aria-label="Próximo">
@@ -1060,7 +1068,7 @@
 
         <!-- Foto à esquerda -->
         <div class="about-photo-wrap" style="flex-shrink: 0;">
-          <img src="assets/img/dr-wenderson.jpg" alt="Dr. Wenderson — Médico Nutrólogo" loading="lazy">
+          <img src="assets/img/dr-wenderson-optimized.jpg" alt="Dr. Wenderson — Médico Nutrólogo" loading="lazy" decoding="async" width="800" height="1200">
         </div>
 
         <!-- Textos à direita -->
@@ -1258,10 +1266,6 @@
        SCRIPTS
        ════════════════════════════════════════ -->
 
-  <!-- GSAP + ScrollTrigger (para perspectiva 3D) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-
   <!-- Kit animations -->
   <script src="assets/js/animations.js" defer></script>
 
@@ -1308,29 +1312,6 @@
             item.classList.add('active');
           }
         });
-      });
-
-      /* ── Perspectiva 3D (GSAP ScrollTrigger) — aguarda scripts deferred ── */
-      window.addEventListener('load', function() {
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-          gsap.registerPlugin(ScrollTrigger);
-          document.querySelectorAll('.kit-perspectiva3d').forEach(function(el) {
-            el.style.transform = 'perspective(1000px) rotateX(45deg)';
-            el.style.transformOrigin = 'center bottom';
-            el.style.willChange = 'transform';
-
-            gsap.to(el, {
-              rotateX: 0,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 90%',
-                end: 'top 30%',
-                scrub: true
-              }
-            });
-          });
-        }
       });
 
       /* ── Smooth scroll para links internos ── */
