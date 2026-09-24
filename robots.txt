@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://drwendersoneustaquio.com.br/sitemap.xml
+Sitemap: https://www.drwendersoneustaquio.com.br/sitemap.xml
